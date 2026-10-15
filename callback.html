@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Código de autorização · Rafael Labs Gatilho</title><link rel="stylesheet" href="estilo.css">
+<meta name="robots" content="noindex"></head>
+<body><main>
+<header><div class="logo">RL</div><div><b>Rafael Labs Gatilho</b><br><span>Retorno do login do Instagram</span></div></header>
+<h1>Autorização concluída</h1>
+<p id="msg">Copie o código abaixo e cole no terminal do robô.</p>
+<p><code id="code" style="word-break:break-all;font-size:15px;color:#00d4ff"></code></p>
+<p><button id="copiar" style="padding:10px 18px;border-radius:10px;border:0;background:#2b7fff;color:#fff;font-weight:700">Copiar código</button></p>
+<p class="data">O código vale por 1 hora e só pode ser usado uma vez. Esta página não guarda nada.</p>
+<script>
+const p = new URLSearchParams(location.search);
+const code = (p.get("code") || "").replace(/#_$/, "");
+document.getElementById("code").textContent = code || (p.get("error_description") || "Nenhum código recebido.");
+document.getElementById("copiar").onclick = () => navigator.clipboard.writeText(code);
+</script>
+</main></body></html>
